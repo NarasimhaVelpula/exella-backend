@@ -44,8 +44,9 @@ const getBills=async(req,res)=>{
 
 const updateBill=async(req,res)=>{
     try{
-        const {billId,paidDate,billDate,amount,units}=req.body
-        console.log(reminderId)
+        const {id:billId}=req.params;
+        const {paidDate,billDate,amount,units}=req.body
+        console.log(billId)
         try{
             let bill=await Bill.findById(billId)
             if(bill){
@@ -74,7 +75,7 @@ const updateBill=async(req,res)=>{
 
 const deleteBill=async(req,res)=>{
     try{
-        const {billId}=req.body
+        const {id:billId}=req.params;
         console.log(billId)
         try{
             let bill=await Bill.findById(billId)
